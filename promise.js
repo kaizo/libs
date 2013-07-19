@@ -1,3 +1,6 @@
+// This is a simple implementation of defer/promise pattern. Done for a StackOverflow answer
+// Provably not a working implementation.
+
 var Promise = function () {
   this.okCallbacks = [];
   this.koCallbacks = [];
