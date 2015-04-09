@@ -1,5 +1,4 @@
 // This is a simple implementation of defer/promise pattern. Done for a StackOverflow answer
-// Provably not a working implementation.
 
 var Promise = function () {
   this.okCallbacks = [];
@@ -30,7 +29,7 @@ Promise.prototype = {
 
     // Check if the promise is still pending or not. If not call the callback
     if (this.status === 'resolved') {
-      this.resolveCallback({
+      this.executeCallback({
         func: okCallback,
         defer: defer
       }, this.data)
@@ -47,7 +46,7 @@ Promise.prototype = {
   executeCallback: function (callbackData, result) {
     window.setTimeout(function () {
       var res = callbackData.func(result);
-      if (res instanceOf Promise) {
+      if (res instanceof Promise) {
         callbackData.defer.bind(res);
       } else {
         callbackData.defer.resolve(res);
